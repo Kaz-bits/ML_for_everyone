@@ -6,11 +6,11 @@ import pandas as pd
 import numpy as np
 
 # Cargar modelo entrenado
-filename = "D:/MASTER_FILES/SCRIPTS/PYTHON/MODELS/idr_svm_model.sav"
+filename = "path_to_the_saved_model" # The extension needs to be .SV
 idr_model = joblib.load(filename)
 
 # Cargar datos de la nueva IDR a predecir
-df_IDRs = pd.read_csv("D:/MASTER_FILES/DATA/SVM_prediction/IDIDRBS_DN_goose_sparrow_8900.csv")
+df_IDRs = pd.read_csv("path_of_your_data") # Use a CSV file
 
 # Obtener los datos numéricos para entrenar el modelo SVM
 pred_IDR = df_IDRs.iloc[:,[2, 3, 4]].values
@@ -31,4 +31,4 @@ df_pred = pd.DataFrame(pred_result.tolist(), columns = ["Prediction"])
 df_IDRs.insert(len(df_IDRs.columns), "Prediction", df_pred)
 
 # Guardar data frame
-df_IDRs.to_csv("D:/MASTER_FILES/DATA/SVM/IDRBS_DN_pSVM_goose_8900_all.csv")
+df_IDRs.to_csv("path_for_saving_your_predicted_data") 
